@@ -36,40 +36,14 @@
 <div class="container">
     <h1 class="text-center my-4">판매 중인 티켓</h1>
     <div class="row">
-        <!-- 카드 1 -->
-        <div class="col-md-4">
+        <div th:each="ticket : ${ticket}" class="col-md-4">
             <div class="card shadow">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="티켓 이미지 1">
+                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="티켓 이미지">
                 <div class="card-body">
-                    <h5 class="card-title">콘서트 티켓</h5>
-                    <p class="card-text">2024년 12월 10일, 서울 올림픽홀</p>
-                    <p class="card-text">가격: 50,000원</p>
-                    <a href="#" class="btn btn-primary">구매하기</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 카드 2 -->
-        <div class="col-md-4">
-            <div class="card shadow">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="티켓 이미지 2">
-                <div class="card-body">
-                    <h5 class="card-title">영화 티켓</h5>
-                    <p class="card-text">2024년 11월 25일, CGV 왕십리</p>
-                    <p class="card-text">가격: 12,000원</p>
-                    <a href="#" class="btn btn-primary">구매하기</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 카드 3 -->
-        <div class="col-md-4">
-            <div class="card shadow">
-                <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="티켓 이미지 3">
-                <div class="card-body">
-                    <h5 class="card-title">뮤지컬 티켓</h5>
-                    <p class="card-text">2024년 10월 5일, 세종문화회관</p>
-                    <p class="card-text">가격: 70,000원</p>
+                    <h5 class="card-title" th:text="${ticket.title}">티켓 제목</h5>
+                    <p class="card-text" th:text="${ticket.startDate}">티켓 날짜</p>
+                    <p class="card-text" th:text="${ticket.venue}">티켓 장소</p>
+                    <p class="card-text">가격: <span th:text="${ticket.price}"></span>원</p>
                     <a href="#" class="btn btn-primary">구매하기</a>
                 </div>
             </div>

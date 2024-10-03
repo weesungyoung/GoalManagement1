@@ -4,6 +4,8 @@ import com.example.demo.dao.TicketDAO;
 import com.example.demo.model.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.Date;
+import java.util.List;
 
 @Service
 public class TicketService {
@@ -16,5 +18,9 @@ public class TicketService {
 
     public void addTicket(Ticket ticket) {
         ticketDAO.insertTicket(ticket);
+    }
+
+    public List<Ticket> getTicketByEndDate(String date) {
+        return ticketDAO.selectTicketsByDate(date);
     }
 }
