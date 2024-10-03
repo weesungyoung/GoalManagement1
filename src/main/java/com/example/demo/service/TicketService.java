@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dao.SituationDAO;
 import com.example.demo.dao.TicketDAO;
 import com.example.demo.model.Ticket;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,12 @@ import java.util.List;
 @Service
 public class TicketService {
     private final TicketDAO ticketDAO;
+    private final SituationDAO situationDAO;
 
     @Autowired
-    public TicketService(TicketDAO ticketDAO) {
+    public TicketService(TicketDAO ticketDAO, SituationDAO situationDAO)
+    {
+        this.situationDAO = situationDAO;
         this.ticketDAO = ticketDAO;
     }
 
@@ -22,5 +26,17 @@ public class TicketService {
 
     public List<Ticket> getTicketByEndDate(String date) {
         return ticketDAO.selectTicketsByDate(date);
+    }
+
+    public boolean currentCount(Integer ticketId, Integer availCount) {
+        if (availCount > situationDAO.getCurrentTicketCount(ticketId)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void purchaseTicket(Integer ticketID, String email) {
+        situationDAO.insertTicketSit(ticketID, email);
     }
 }
