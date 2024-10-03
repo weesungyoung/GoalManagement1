@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" style="height: 100vh;">
+<head>
+    <title>회원가입</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="height: 100%;">
+<div class="container">
+    <div class="home-button">
+        <a class="btn btn-secondary" th:href="@{/}" role="button">홈으로 이동</a>
+    </div>
+    <h2 style="margin-top: 100px;">회원가입</h2>
+    <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+        <div class="regist-container">
+        <div class="form-group">
+            <label for="email">이메일:</label>
+            <input type="email" class="form-control" id="email" th:field="*{email}" required>
+        </div>
+        <div class="form-group">
+            <label for="password">비밀번호:</label>
+            <input type="password" class="form-control" id="password" th:field="*{password}" required>
+        </div>
+        <div class="form-group">
+            <label for="name">이름:</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">가입하기</button>
+        </div>
+    </form>
+</div>
+</body>
+<style>
+.regist-container {
+    margin-top: 30px;
+}
+.home-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+</style>
+</html>
