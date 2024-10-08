@@ -41,9 +41,10 @@
                 <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="티켓 이미지">
                 <div class="card-body">
                     <h5 class="card-title" th:text="${ticket.title}">티켓 제목</h5>
-                    <p class="card-text" th:text="${ticket.startDate}">티켓 날짜</p>
-                    <p class="card-text" th:text="${ticket.venue}">티켓 장소</p>
-                    <p class="card-text">가격: <span th:text="${ticket.price}"></span>원</p>
+                    <p class="card-text">기간 : <span th:text="${ticket.startDate}"></span> ~ <span th:text="${ticket.endDate}"></span></p>
+                    <p class="card-text">가격 : <span th:text="${ticket.price}"></span>원</p>
+                    <p class="card-text">장소 : <span th:text="${ticket.venue}"></span></p>
+                    <p class="card-text">정원 : <span th:text="${ticket.availCount}"></span>명</p>
                     <form th:action="@{'/purchase/' + ${ticket.ticketId} + '/' + ${ticket.availCount}}" method="post">
                     <button type="submit" class="btn btn-primary">구매하기</button>
                     </form>
