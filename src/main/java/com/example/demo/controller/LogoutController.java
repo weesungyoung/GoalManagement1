@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LogoutController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.invalidate(); // 세션 무효화
-        return "redirect:/"; // 로그인 페이지로 리다이렉트
+        session.invalidate();
+        return "redirect:/";
     }
 }

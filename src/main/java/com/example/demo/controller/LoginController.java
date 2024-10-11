@@ -40,7 +40,7 @@ public class LoginController {
             return "redirect:/";
         } else {
             model.addAttribute("errorMessage", "로그인 실패");
-            return "login"; // 로그인 페이지로 돌아가기
+            return "login";
         }
     }
 

@@ -28,12 +28,8 @@ public class TicketService {
         return ticketDAO.selectTicketsByDate(date);
     }
 
-    public boolean currentCount(Integer ticketId, Integer availCount) {
-        if (availCount > situationDAO.getCurrentTicketCount(ticketId)) {
-            return true;
-        } else {
-            return false;
-        }
+    public int currentCount(Integer ticketId) {
+        return situationDAO.getCurrentTicketCount(ticketId);
     }
 
     public void purchaseTicket(Integer ticketID, String email) {
