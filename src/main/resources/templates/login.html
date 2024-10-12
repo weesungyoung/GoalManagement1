@@ -3,42 +3,115 @@
 <head>
     <title>로그인</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            display: contents;
+        }
+
+        .login-card {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .login-card h2 {
+            color: black;
+            font-weight: bold;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            color: black;
+        }
+
+        .form-control {
+            border-radius: 30px;
+            padding: 15px;
+            border: 1px solid #ced4da;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .register-button {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .register-button a {
+            color: #007bff;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .register-button a:hover {
+            text-decoration: underline;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .home-button .btn-secondary {
+            background-color: #6c757d;
+            border-radius: 30px;
+            padding: 8px 20px;
+        }
+    </style>
 </head>
-<body style="height: 100%;">
+<body>
+
 <div class="container">
     <div class="home-button">
-        <a class="btn btn-secondary" th:href="@{/}" role="button">홈으로 이동</a>
+        <a class="btn btn-secondary" th:href="@{/}" role="button">홈으로</a>
     </div>
-    <h2 style="margin-top: 100px;">로그인</h2>
-    <form th:action="@{/login}" method="post">
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email" required>
+
+    <div class="login-card">
+        <h2>로그인</h2>
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">로그인</button>
+            </div>
+        </form>
+        <div class="register-button">
+            <p><a th:href="@{/register}">회원가입 하세요!</a></p>
         </div>
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div class="form-group">
-            <button type="submit">Login</button>
-        </div>
-    </form>
-    <div class="register-button" style="margin-top: 20px;">
-        <p><a th:href="@{/register}">회원가입 하세요!</a></p>
     </div>
 </div>
+
 </body>
-<style>
-    .login-container {
-        margin-top: 30px;
-    }
-    .home-button {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-    }
-    .register-button {
-        text-align: center;
-    }
-</style>
 </html>

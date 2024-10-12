@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구매 현황</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #000;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .home-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .purchase-card {
+            background-color: #ffffff;
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .purchase-card h4 {
+            color: #000;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .purchase-details {
+            margin-bottom: 10px;
+        }
+        .purchase-details span {
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="home-button">
+        <a class="btn btn-secondary" th:href="@{/}" role="button">홈으로</a>
+    </div>
+    <h2 class="text-center">구매 현황</h2>
+    <div class="card-container">
+        <div th:each="purchase : ${purchaseHistory}" class="purchase-card">
+            <h4>티켓 제목: <span th:text="${purchase['title']}"></span></h4>
+            <p class="purchase-details">구매 일자: <span th:text="${purchase['purchaseDate']}"></span></p>
+            <p class="purchase-details">결제 상태: <span th:text="${purchase['status']}"></span></p>
+            <p class="purchase-details">금액: <span th:text="${purchase['price']} + '원'"></span></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
