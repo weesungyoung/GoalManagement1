@@ -35,4 +35,9 @@ public class TicketService {
     public void purchaseTicket(Integer ticketID, String email) {
         situationDAO.insertTicketSit(ticketID, email);
     }
+
+    //클릭 테스트
+//    public void purchaseTicketTest(Integer ticketID) {
+//        situationDAO.insertTicketSit(ticketID);
+//    }
 }

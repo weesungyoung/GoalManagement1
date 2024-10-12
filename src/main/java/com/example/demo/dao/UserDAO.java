@@ -23,9 +23,7 @@ public class UserDAO {
     public User selectUserByEmail(String email) {
         String query = "SELECT * FROM user WHERE email = ?";
         try {
-            // 사용자 정보를 User 객체로 반환합니다.
             return jdbcTemplate.queryForObject(query, new Object[]{email}, (rs, rowNum) -> {
-                System.out.println("Admin value from DB: " + rs.getInt("admin"));
                 User user = new User();
                 user.setId(rs.getInt("id"));
                 user.setEmail(rs.getString("email"));
